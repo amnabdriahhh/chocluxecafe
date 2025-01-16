@@ -1,0 +1,458 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Chocluxe Cafe</title>
+	<link rel="icon" href="images/chocluxelogo.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #2D1E17;
+            line-height: 1.6;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links a {
+            color: #685349;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background: linear-gradient(45deg, #AD9476, #685349);
+            box-shadow: 0 4px 15px rgba(173, 148, 118, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/chocluxebanner1.jpg');
+            background-size: cover;
+            background-position: center;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+        }
+
+        .section {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+        }
+
+        .section h2 {
+            color: #2D1E17;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            text-align: center;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #AD9476, #2D1810);
+            border-radius: 2px;
+        }
+
+        .section p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            color: #685349;
+        }
+
+        /* Logo Section */
+        .logo-section {
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .logo-section img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 2rem;
+        }
+
+        /* Core Principles Cards */
+        .principles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2.5rem;
+            margin-top: 3rem;
+            padding: 0.5rem;
+        }
+
+        .principle-card {
+            background: #fff;
+            padding: 2.5rem 2rem;
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.4s ease;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border: 2px solid #AD9476;
+        }
+
+        .principle-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-size: cover;
+            background-position: center;
+            opacity: 0.15;
+            transition: opacity 0.4s ease;
+            z-index: 1;
+        }
+
+        .principle-card:nth-child(1)::before {
+            background-image: url('images/principle-innovation.jpg');
+        }
+
+        .principle-card:nth-child(2)::before {
+            background-image: url('images/principle-quality.jpg');
+        }
+
+        .principle-card:nth-child(3)::before {
+            background-image: url('images/principle-environment.jpg');
+        }
+
+        .principle-card:hover {
+            transform: translateY(-10px);
+            border-color: #2D1810;
+            box-shadow: 0 15px 40px rgba(45, 24, 16, 0.15);
+        }
+
+        .principle-card:hover::before {
+            opacity: 0.25;
+        }
+
+        .principle-card h3 {
+            color: #2D1810;
+            margin-bottom: 1.2rem;
+            font-size: 1.8rem;
+            position: relative;
+            z-index: 2;
+            font-weight: bold;
+        }
+
+        .principle-card p {
+            color: #685349;
+            font-size: 1.1rem;
+            line-height: 1.7;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            margin: 0;
+        }
+		
+		 .header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            color: #333;
+            margin: 0;
+            font-weight: bold;
+        }
+
+        .circular-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: center;
+        }
+        
+        td {
+            padding: 15px;
+            vertical-align: top;
+            width: 20%;
+        }
+        
+        .title {
+            font-weight: bold;
+            margin: 15px 0 10px 0;
+            font-size: 1.2em;
+        }
+        
+        .description {
+            font-size: 0.9em;
+            color: #666;
+            line-height: 1.4;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #17120E;
+            padding: 4rem 0;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            color: #AD9476;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #AD9476;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .principles {
+                grid-template-columns: 1fr;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .section h2 {
+                font-size: 2rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+        }
+		
+		.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px; 
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.2s; 
+    z-index: 998;
+	}
+
+.back-to-top:hover {
+    background: #796254;
+    transform: translateY(-3px);
+}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+             <img src="images/chocluxelogo.png" alt="Chocluxe Café Logo" class="logo-img"> <b><span class="logo-text"><b>𝐂𝐡𝐨𝐜𝐥𝐮𝐱𝐞 𝐂𝐚𝐟𝐞</b></span></div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="menu.html">Menu</a>
+                <a href="shop.html">Shop</a>
+                <a href="locations.html">Locations</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contactus.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <h1>Our Story</h1>
+    </div>
+
+ <!-- Roots of ChocLuxe Cafe -->
+    <div class="section">
+        <ul><h2>Roots of ChocLuxe Cafe</h2>
+        <p><li style="list-style-image:url(images/cat.png)">When you visit ChocLuxe Cafe, it's a true indulgence experience. We want you to feel joy at every touchpoint, from the taste of our premium chocolate creations to the relaxing ambiance of our cafe. Every moment is crafted to delight your senses and create lasting memories.</li></p>
+        <p><li style="list-style-image:url(images/cat.png)">Everyone loves a decadent chocolate treat – a rich, indulgent experience that satisfies any craving. For us at ChocLuxe Cafe, we aim to make our mark in Kuala Lumpur by offering luxurious and irresistible chocolate creations crafted with passion by our team of dedicated partners.</li></p>
+        <p><li style="list-style-image:url(images/cat.png)">From creamy milkshakes to rich chocolate cakes and cookies, ChocLuxe's unique menu is a paradise for chocolate enthusiasts and dessert lovers, curing cravings with every bite. It's a cocoa experience that will stay with you forever.</li></p>
+        <p><li style="list-style-image:url(images/cat.png)">When you're at ChocLuxe Cafe, you can expect to enjoy high-quality chocolate made with the finest ingredients. We pride ourselves on our wide variety of chocolate beverages, desserts, and snacks, all carefully prepared to achieve the highest standards of taste and quality.</li></p>
+        <p><li style="list-style-image:url(images/cat.png)">We want our guests to make magical memories in our peaceful and inviting atmosphere. Located in Bandar Tun Razak, Kuala Lumpur, our cafe's relaxed environment offers a perfect balance of comfort and elegance—a space to enjoy premium chocolate while creating unforgettable moments.</li></p></ul>
+    </div>
+
+    <!-- Behind the Name -->
+    <div class="section">
+        <h2>Behind the Name ChocLuxe Cafe</h2>
+        <div class="logo-section">
+            <img src="images/chocluxelogo.jpg" alt="ChocLuxe Cafe Logo">
+        </div>
+        <p>ChocLuxe Cafe combines luxury and chocolate to deliver a premium indulgence experience. Our logo features stacked chocolate bars surrounded by melted chocolate, symbolizing abundance and deliciousness, with a tagline, <em>"Sweet Escape Awaits,"</em> inviting customers to savor a delightful break. Golden stars reflect our commitment to quality and a five-star experience, while the laurel wreath represents joy and celebration. The rich brown, creamy white, and gold accents in our branding exude warmth, sophistication, and elegance—perfectly capturing the essence of ChocLuxe Cafe.</p>
+    </div>
+
+    <!-- Core Principles -->
+    <div class="section">
+        <h2>Core Principles of Chocluxe Café</h2>
+        <div class="principles">
+            <div class="principle-card">
+                <h3>Innovation</h3>
+                <p>Maintain an exciting and fresh menu by consistently adding new and innovative chocolate-based experiences and products.</p>
+            </div>
+            <div class="principle-card">
+                <h3>Quality</h3>
+                <p>Keep the highest standards of quality for all of the chocolate products, making sure that every product is created with premium ingredients, and make improvements according to feedback from customers and new trends in the chocolate industry.</p>
+            </div>
+            <div class="principle-card">
+                <h3>Environment</h3>
+                <p>Create a warm and inviting environment that improves the customer's experience, with kid-friendly menu items and activities available as well as a safe environment for kids.</p>
+            </div>
+        </div>
+    </div>
+	
+	    <div class="header">
+        <h1>Meet Our Team</h1>
+    </div>
+
+    <table>
+        <tr>
+            <td>
+                <img src="images/aina.jpg" alt="Image 1" class="circular-image">
+                <div class="title">General Manager</div>
+                <div class="description">Oversees all operations and ensures Chocluxe Cafe achieves its goals.</div>
+            </td>
+            <td>
+                <img src="images/amna.jpg" alt="Image 2" class="circular-image">
+                <div class="title">Administration Manager</div>
+                <div class="description">Manages daily administrative tasks and keeps the team organized.</div>
+            </td>
+            <td>
+                <img src="images/heidi.jpg" alt="Image 3" class="circular-image">
+                <div class="title">Marketing Manager</div>
+                <div class="description">Develops strategies to promote Chocluxe Cafe and attract customers.</div>
+            </td>
+            <td>
+                <img src="images/janna.jpg" alt="Image 4" class="circular-image">
+                <div class="title">Operation Manager</div>
+                <div class="description">Ensure smooth daily operations and maintains service quality</div>
+            </td>
+            <td>
+                <img src="images/yasmin.jpg" alt="Image 5" class="circular-image">
+                <div class="title">Financial Manager</div>
+                <div class="description">Handles budgets, expenses, and financial planning for the cafe.</div>
+            </td>
+        </tr>
+    </table>
+
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="copyright">© 2025 Chocluxe Cafe. All rights reserved.</div>
+            <div class="social-links">
+                 <div class="social-media">
+        <a href="https://www.tiktok.com/@chocluxecafe" class="tiktok" target="_blank">
+            <img src="images/tiktok-logo.png" alt="TikTok Logo" style="width: 30px; height: 30px;">
+        </a>
+        <a href="https://www.instagram.com/chocluxecafe" class="instagram" target="_blank">
+            <img src="images/ig-logo.png" alt="Instagram Logo" style="width: 30px; height: 30px;">
+        </a>
+            </div>
+        </div>
+    </footer>
+	
+	<a href="#top" class="back-to-top">Go Back to Top</a>
+</body>
+</html>

@@ -1,0 +1,784 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocluxe Cafe</title>
+	<link rel="icon" href="images/chocluxelogo.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #2D1E17;
+        }
+		
+		/* Marquee Section */
+        .marquee-container {
+            background: linear-gradient(45deg, #AD9476, #685349);
+            padding: 1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee {
+            white-space: nowrap;
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.5rem 0;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+    display: flex;
+    align-items: center; /* Align logo and text vertically */
+    gap: 30px;           /* Space between the logo and text */
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 60px; /* Resize the logo to be more prominent */
+    width: auto;  /* Maintain aspect ratio */
+}
+
+.logo-text {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+}
+
+         .nav-links a {
+            color: #685349;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background: linear-gradient(45deg, #AD9476, #685349);
+            box-shadow: 0 4px 15px rgba(173, 148, 118, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #AD9476;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::before {
+            width: 80%;
+        }
+
+        /* Slideshow */
+        .slideshow {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        .slide.active {
+            opacity: 1;
+        }
+
+        .slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .slide-content {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            color: white;
+            z-index: 1;
+            max-width: 800px;
+            padding: 0 2rem;
+        }
+
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.4);
+        }
+
+        .slide-content h2 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .slide-content p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+        }
+
+        .slide-content button {
+            background-color: #AD9476;
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            border-radius: 2rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .slide-content button:hover {
+            background-color: #685349;
+            transform: translateY(-2px);
+        }
+
+        .prev-btn, .next-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(255,255,255,0.2);
+            border: none;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            z-index: 2;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+
+        .prev-btn:hover, .next-btn:hover {
+            background: rgba(255,255,255,0.3);
+        }
+
+        .prev-btn { left: 2rem; }
+        .next-btn { right: 2rem; }
+		
+		button a, .features .feature button a, .slide-content button a {
+        text-decoration: none; 
+        color: inherit;
+        display: inline-block;
+    }
+
+    button a:hover, .features .feature button a:hover, .slide-content button a:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+	
+        /* Teasers */
+        .teasers {
+            background-color: #faf7f5;
+            padding: 6rem 0;
+        }
+
+        .teasers-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        .teaser-card {
+            position: relative;
+            height: 400px;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .teaser-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .teaser-card:hover img {
+            transform: scale(1.05);
+        }
+
+        .teaser-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+        }
+
+        .teaser-content h3 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+        }
+
+        .teaser-content p {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .teaser-content a {
+            color: #AD9476;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .teaser-content a:hover {
+            color: #fff;
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: #17120E;
+            padding: 4rem 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            color: #AD9476;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #AD9476;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        .social-links i {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .features-container {
+                grid-template-columns: 1fr;
+            }
+
+            .teasers-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .slide-content h2 {
+                font-size: 2.5rem;
+            }
+
+            .slide-content p {
+                font-size: 1.25rem;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .prev-btn, .next-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+        }
+		
+		.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px; 
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.2s; 
+    z-index: 998;
+}
+
+.back-to-top:hover {
+    background: #796254;
+    transform: translateY(-3px);
+}
+
+ /* Game Section */
+        .game-section {
+            background-i;
+            padding: 4rem 0;
+            text-align: center;
+        }
+
+        .game-section h2 {
+            color: #685349;
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .game-section p {
+            color: #685349;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            font-size: 1.1rem;
+        }
+
+        .game-container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .game-stats {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+        }
+
+        .stat {
+            background: #faf7f5;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            color: #685349;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            perspective: 1000px;
+        }
+
+        .card {
+            aspect-ratio: 1;
+            position: relative;
+            transform-style: preserve-3d;
+            transition: transform 0.6s;
+            cursor: pointer;
+        }
+
+        .card.flipped {
+            transform: rotateY(180deg);
+        }
+
+        .card-front,
+        .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .card-front {
+            background: linear-gradient(135deg, #AD9476, #685349);
+            color: white;
+        }
+
+        .card-back {
+            background: white;
+            transform: rotateY(180deg);
+        }
+
+        .matched {
+            opacity: 0.2;
+            cursor: default;
+        }
+
+        .win-message {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: white;
+            padding: 2rem;
+            border-radius: 12px;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            z-index: 100;
+        }
+
+        .win-message h2 {
+            color: #685349;
+            margin-bottom: 1rem;
+        }
+
+        .win-message button {
+            background: #685349;
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 999px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s;
+        }
+
+        .win-message button:hover {
+            background: #AD9476;
+        }
+
+        @media (max-width: 768px) {
+            .game-board {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .game-container {
+                margin: 0 1rem;
+            }
+        }
+		
+    </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+	<!-- Marquee Section -->
+    <div class="marquee-container">
+        <div class="marquee">
+₊˚.🎧 ✩｡☕ 🤎 <b> Welcome to Chocluxe Cafe - Where Every Bite Tells a Story | New Menu Available Now | Visit Our Multiple Locations | Follow Us on Instagram and TikTok for Daily Delights | Special Collections Coming Soon </b> ₊˚.🎧 ✩｡☕ 🤎
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+             <img src="images/chocluxelogo.png" alt="Chocluxe Café Logo" class="logo-img"> <b><span class="logo-text"><b>𝐂𝐡𝐨𝐜𝐥𝐮𝐱𝐞 𝐂𝐚𝐟𝐞</b></span></div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="menu.html">Menu</a>
+                <a href="shop.html">Shop</a>
+                <a href="locations.html">Locations</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contactus.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Slideshow -->
+    <div class="slideshow">
+        <div class="slide active">
+            <img src="images/chocluxebanner1.jpg" alt="Welcome">
+            <div class="slide-content">
+                <h2>Welcome to Chocluxe Cafe</h2>
+                <p>Indulge in the finest chocolate creations and coffee</p>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="images/chocluxebanner2.jpg" alt="Our Story">
+            <div class="slide-content">
+                <h2>Our Story</h2>
+                <p>Discover the passion behind Chocluxe Cafe</p>
+                 <button><a href="aboutus.html">Go to About Us</a></button>
+            </div>
+        </div>
+        <div class="slide">
+            <img src="images/chocluxebanner3.jpg" alt="Menu">
+            <div class="slide-content">
+                <h2>Exquisite Menu</h2>
+                <p>Explore our delectable chocolate treats and beverages</p>
+                <button><a href="menu.html">View Menu</a></button>
+            </div>
+        </div>
+		<div class="slide">
+            <img src="images/chocluxebanner4.jpg" alt="Shop">
+            <div class="slide-content">
+                <h2>Sweet Delights & Unique Creations</h2>
+                <p>Visit our shop to explore a variety of handmade chocolates, beautiful chocolate bouquets, and unique merchandise.</p>
+                <button><a href="shop.html">Visit Shop</a></button>
+            </div>
+        </div>
+        <button class="prev-btn">❮</button>
+        <button class="next-btn">❯</button>
+    </div>
+	
+	 <!-- Game Section -->
+    <section class="game-section">
+        <h2>˗ˏˋ જ⁀➴ ˎˊChocolate Memory Game 🎮࿐ ࿔*:･ﾟ</h2>
+        <p>Take a sweet break and play our chocolate-themed memory game to win special prize! Match pairs of delicious treats to win.</p>
+        
+        <div class="game-container">
+            <div class="game-stats">
+                <div class="stat">Moves: <span id="moves">0</span></div>
+                <div class="stat">Pairs Found: <span id="pairs">0</span>/6</div>
+            </div>
+            <div class="game-board" id="gameBoard"></div>
+        </div>
+
+        <div class="win-message" id="winMessage">
+            <h2>Congratulations! 🎉</h2>
+            <p>Screenshot this and bring it to Chocluxe Cafe as a proof to claim our limited special chocolate candy!</p>
+            <p>Total moves: <span id="finalMoves">0</span></p>
+            <button onclick="resetGame()">Play Again</button>
+        </div>
+    </section>
+
+    <!-- Teasers -->
+    <section class="teasers">
+        <div class="teasers-grid">
+            <div class="teaser-card">
+                <img src="images/chocteaser.jpg" alt="Gallery">
+                <div class="teaser-content">
+                    <h3>Our Gallery</h3>
+                    <p>Explore our cozy café, delicious treats, and welcoming atmosphere through a collection of beautiful images.</p>
+                    <a href="gallery.html">View Gallery →</a>
+                </div>
+            </div>
+            <div class="teaser-card">
+                <img src="images/contactteaser.jpg" alt="Contact">
+                <div class="teaser-content">
+                    <h3>Get in Touch</h3>
+                    <p>Need to get in touch with us? We’d love to hear from you! Reach out for inquiries, feedback, or any assistance you may need. Fill out the form below or use the provided details to connect with our friendly team. We’re here to help!</p>
+                    <a href="contactus.html">Contact Us →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+	
+	 <!-- Hidden audio autoplay -->
+    <audio id="background-music" autoplay loop style="display: none;">
+        <source src="audio/websitemusic.mp3" type="audio/mp3">
+    </audio>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="copyright">© 2025 Chocluxe Cafe. All rights reserved.</div>
+            <div class="social-links">
+                 <div class="social-media">
+        <a href="https://www.tiktok.com/@chocluxecafe" class="tiktok" target="_blank">
+            <img src="images/tiktok-logo.png" alt="TikTok Logo" style="width: 30px; height: 30px;">
+        </a>
+        <a href="https://www.instagram.com/chocluxecafe" class="instagram" target="_blank">
+            <img src="images/ig-logo.png" alt="Instagram Logo" style="width: 30px; height: 30px;">
+        </a>
+            </div>
+        </div>
+    </footer>
+	
+	<a href="#top" class="back-to-top">Go Back to Top</a>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Slideshow functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+
+        function showSlide(n) {
+            slides.forEach(slide => slide.classList.remove('active'));
+            currentSlide = (n + totalSlides) % totalSlides;
+            slides[currentSlide].classList.add('active');
+        }
+
+        document.querySelector('.prev-btn').addEventListener('click', () => showSlide(currentSlide - 1));
+        document.querySelector('.next-btn').addEventListener('click', () => showSlide(currentSlide + 1));
+
+        // Auto advance slides
+        setInterval(() => showSlide(currentSlide + 1), 5000);
+		
+		alert (" ──୨ৎ 𝐖𝐄𝐋𝐂𝐎𝐌𝐄 𝐓𝐎 𝐂𝐇𝐎𝐂𝐋𝐔𝐗𝐄 𝐂𝐀𝐅𝐄 𝐖𝐄𝐁𝐒𝐈𝐓𝐄 ୨ৎ──");
+		
+		 // Add the game script
+        const emojis = ['🍫', '🍪', '🎂', '🧁', '🍮', '🍩'];
+        const gameEmojis = [...emojis, ...emojis];
+        let flippedCards = [];
+        let matchedPairs = 0;
+        let moves = 0;
+        let canFlip = true;
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function createCard(emoji, index) {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <div class="card-front">🎁</div>
+                <div class="card-back">${emoji}</div>
+            `;
+            card.dataset.index = index;
+            card.dataset.emoji = emoji;
+            card.addEventListener('click', () => flipCard(card));
+            return card;
+        }
+
+        function flipCard(card) {
+            if (!canFlip || card.classList.contains('flipped') || card.classList.contains('matched')) {
+                return;
+            }
+
+            card.classList.add('flipped');
+            flippedCards.push(card);
+
+            if (flippedCards.length === 2) {
+                moves++;
+                document.getElementById('moves').textContent = moves;
+                canFlip = false;
+                checkMatch();
+            }
+        }
+
+        function checkMatch() {
+            const [card1, card2] = flippedCards;
+            const match = card1.dataset.emoji === card2.dataset.emoji;
+
+            if (match) {
+                card1.classList.add('matched');
+                card2.classList.add('matched');
+                matchedPairs++;
+                document.getElementById('pairs').textContent = matchedPairs;
+
+                if (matchedPairs === emojis.length) {
+                    showWinMessage();
+                }
+            } else {
+                setTimeout(() => {
+                    card1.classList.remove('flipped');
+                    card2.classList.remove('flipped');
+                }, 1000);
+            }
+
+            setTimeout(() => {
+                flippedCards = [];
+                canFlip = true;
+            }, 1000);
+        }
+
+        function showWinMessage() {
+            document.getElementById('finalMoves').textContent = moves;
+            document.getElementById('winMessage').style.display = 'block';
+        }
+
+        function resetGame() {
+            const gameBoard = document.getElementById('gameBoard');
+            gameBoard.innerHTML = '';
+            flippedCards = [];
+            matchedPairs = 0;
+            moves = 0;
+            canFlip = true;
+            document.getElementById('moves').textContent = '0';
+            document.getElementById('pairs').textContent = '0';
+            document.getElementById('winMessage').style.display = 'none';
+            initializeGame();
+        }
+
+        function initializeGame() {
+            const shuffledEmojis = shuffleArray([...gameEmojis]);
+            const gameBoard = document.getElementById('gameBoard');
+            
+            shuffledEmojis.forEach((emoji, index) => {
+                const card = createCard(emoji, index);
+                gameBoard.appendChild(card);
+            });
+        }
+
+        // Initialize the game
+        initializeGame();
+    </script>
+</body>
+</html>

@@ -1,0 +1,326 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocluxe Cafe - Shop</title>
+	<link rel="icon" href="images/chocluxelogo.png" type="image/png">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #2D1E17;
+        }
+
+        /* Marquee Section */
+        .marquee-container {
+            background: linear-gradient(45deg, #AD9476, #685349);
+            padding: 1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee {
+            white-space: nowrap;
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.5rem 0;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links a {
+            color: #685349;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background: linear-gradient(45deg, #AD9476, #685349);
+            box-shadow: 0 4px 15px rgba(173, 148, 118, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #17120E;
+            padding: 4rem 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            color: #AD9476;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #AD9476;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        .social-links img {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+        }
+		
+				.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px; 
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.2s; 
+    z-index: 998;
+}
+
+.back-to-top:hover {
+    background: #796254;
+    transform: translateY(-3px);
+}
+    </style>
+    <script>
+        // Filter Products Functionality
+        function filterProducts(category) {
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                if (category === 'all' || product.classList.contains(category)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+    <!-- Marquee Section -->
+    <div class="marquee-container">
+        <div class="marquee">
+            ₊˚.🎧 ✩｡☕ 🤎 <b>Welcome to Chocluxe Cafe - Where Every Bite Tells a Story | New Menu Available Now | Visit Our Multiple Locations | Follow Us on Instagram and TikTok for Daily Delights | Special Collections Coming Soon</b> ₊˚.🎧 ✩｡☕ 🤎
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+             <img src="images/chocluxelogo.png" alt="Chocluxe Café Logo" class="logo-img"> <b><span class="logo-text"><b>𝐂𝐡𝐨𝐜𝐥𝐮𝐱𝐞 𝐂𝐚𝐟𝐞</b></span></div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="menu.html">Menu</a>
+                <a href="shop.html">Shop</a>
+                <a href="locations.html">Locations</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contactus.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Category Navigation -->
+    <div class="bg-white border-t border-b border-gray-100">
+        <div class="container mx-auto px-4">
+            <div class="flex flex-wrap justify-center gap-8 py-4">
+                <button onclick="filterProducts('all')" class="text-[#2C1810] hover:text-[#5C3D2E] font-medium">All</button>
+                <button onclick="filterProducts('chocolate')" class="text-[#2C1810] hover:text-[#5C3D2E] font-medium">Chocolates</button>
+                <button onclick="filterProducts('gifts')" class="text-[#2C1810] hover:text-[#5C3D2E] font-medium">Gift Sets</button>
+                <button onclick="filterProducts('merchandises')" class="text-[#2C1810] hover:text-[#5C3D2E] font-medium">Merchandises</button>
+                <button onclick="filterProducts('special')" class="text-[#2C1810] hover:text-[#5C3D2E] font-medium">Limited Edition</button>
+            </div>
+        </div>
+    </div>
+
+<!-- Products Grid -->
+<div class="container mx-auto px-4 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <!-- Chocolates -->			
+        <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="https://images.unsplash.com/photo-1549007994-cb92caebd54b?auto=format&fit=crop&q=80"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">Chocolates Collection</h3>
+                <p class="text-gray-600 text-sm mb-4">Indulge in our velvety chocolate menus with the finest ingredients for a blissfuL melt-in-your-mouth experience.</p>
+                <div class="flex justify-between items-center">
+                    <a href="chocolates.html" class="bg-[#5C3D2E] text-white px-4 py-2 rounded-full text-sm hover:bg-[#8B4513] transition-colors">View More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Gift Sets -->
+        <div class="product gifts product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="https://images.unsplash.com/photo-1481391319762-47dff72954d9?auto=format&fit=crop&q=80"
+                         alt="Luxury Gift Sets"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">Luxury Gifts Sets</h3>
+                <p class="text-gray-600 text-sm mb-4">Delight in our elegant chocolate gift sets, featuring a curated selection of our finest treats, perfect for any occasion.</p>
+                <div class="flex justify-between items-center">
+                    <a href="giftsets.html" class="bg-[#5C3D2E] text-white px-4 py-2 rounded-full text-sm hover:bg-[#8B4513] transition-colors">View More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Merchandises -->
+        <div class="product merchandises product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="https://images.unsplash.com/photo-1581264247263-5b1afa9dc0b1?q=80&w=2070&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                         alt="Merchandises"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">Merchandises</h3>
+                <p class="text-gray-600 text-sm mb-4">Explore our exclusive chocolate merchandise, including stylish apparel and accessories, perfect for every chocolate lover's collection.</p>
+                <div class="flex justify-between items-center">
+                    <a href="merchandise.html" class="bg-[#5C3D2E] text-white px-4 py-2 rounded-full text-sm hover:bg-[#8B4513] transition-colors">View More</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Limited Edition -->
+        <div class="product special product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <div class="relative">
+                        <img src="https://images.unsplash.com/photo-1548907040-4baa42d10919?auto=format&fit=crop&q=80"
+                             alt="Limited Collection"
+                             class="w-full aspect-square object-cover rounded-lg mb-4">
+                    </div>
+                    <span class="absolute top-2 right-2 bg-[#E4A853] text-white px-3 py-1 rounded-full text-xs">Limited Edition</span>
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">Special Limited Edition!</h3>
+                <p class="text-gray-600 text-sm mb-4">Savor our limited edition chocolates, crafted with unique flavors available only for a short time—experience the taste of exclusivity!</p>
+                <div class="flex justify-between items-center">
+                    <a href="limited-edition.html" class="bg-[#5C3D2E] text-white px-4 py-2 rounded-full text-sm hover:bg-[#8B4513] transition-colors">View More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+	
+	 <!-- Hidden audio autoplay -->
+    <audio id="background-music" autoplay loop style="display: none;">
+        <source src="audio/websitemusic.mp3" type="audio/mp3">
+    </audio>
+	
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="copyright">© 2025 Chocluxe Cafe. All rights reserved.</div>
+            <div class="social-links">
+                 <div class="social-media">
+        <a href="https://www.tiktok.com/@chocluxecafe" class="tiktok" target="_blank">
+            <img src="images/tiktok-logo.png" alt="TikTok Logo" style="width: 30px; height: 30px;">
+        </a>
+        <a href="https://www.instagram.com/chocluxecafe" class="instagram" target="_blank">
+            <img src="images/ig-logo.png" alt="Instagram Logo" style="width: 30px; height: 30px;">
+        </a>
+            </div>
+        </div>
+    </footer>
+	
+	<a href="#top" class="back-to-top">Go Back to Top</a>
+
+</body>
+</html>

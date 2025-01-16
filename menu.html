@@ -1,0 +1,616 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocluxe Cafe - Menu</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #2D1E17;
+        }
+		* {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+		
+		/* Marquee Section */
+        .marquee-container {
+            background: linear-gradient(45deg, #AD9476, #685349);
+            padding: 1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee {
+            white-space: nowrap;
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.5rem 0;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+		display: flex;
+		align-items: center; /* Align logo and text vertically */
+		gap: 30px;           /* Space between the logo and text */
+		text-decoration: none;
+		}
+
+		.logo-img {
+			height: 60px; /* Resize the logo to be more prominent */
+			width: auto;  /* Maintain aspect ratio */
+		}
+
+		.logo-text {
+			font-size: 30px;
+			font-weight: bold;
+			color: #333;
+		}
+
+         .nav-links a {
+            color: #685349;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background: linear-gradient(45deg, #AD9476, #685349);
+            box-shadow: 0 4px 15px rgba(173, 148, 118, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #AD9476;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::before {
+            width: 80%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .active {
+            background-color: #AD9476;
+            color: white;
+        }
+
+        header {
+            background-color: #AD9476;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .menu-section, .info-section {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+        .menu-category {
+            margin-bottom: 2rem;
+        }
+
+        .menu-category h2 {
+            font-size: 2rem;
+            color: #AD9476;
+            margin-bottom: 1rem;
+        }
+
+        .menu-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 1rem;
+            border-bottom: 1px solid #ddd;
+            align-items: center;
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+		/* Tooltip container */
+			.tooltip {
+			position: relative;
+			display: inline-block;
+			cursor: pointer;
+		}
+		
+		/* Tooltip text */
+			.tooltiptext {
+			visibility: hidden;
+			width: 200px;
+			background-color: #685349;
+			color: #fff;
+			text-align: center;
+			border-radius: 6px;
+			padding: 5px 10px;
+			position: absolute;
+			z-index: 1;
+			bottom: 125%;
+			left: 50%;
+			transform: translateX(-50%);
+			opacity: 0;
+			transition: opacity 0.3s;
+			font-size: 12px;
+		}
+		
+		/* Tooltip arrow */
+			.tooltiptext::after {
+			content: "";
+			position: absolute;
+			top: 100%;
+			left: 50%;
+			transform: translateX(-50%);
+			border-width: 5px;
+			border-style: solid;
+			border-color: #555 transparent transparent transparent;
+		}
+
+		/* Show the tooltip text when hovering or focusing */
+			.tooltip:hover .tooltiptext,
+			.tooltip:focus .tooltiptext {
+			visibility: visible;
+			opacity: 1;
+	    }
+
+        .menu-item img {
+			height: 150px;
+			width: 150px;
+			object-fit: cover;
+			border-radius: 10px;
+			margin-right: 1rem;
+			border: 3px solid #AD9476;
+			box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+			transition: transform 0.3s;
+		}
+
+        .menu-item img:hover {
+            transform: scale(1.1);
+        }
+
+        .menu-item-name {
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        .menu-item-price {
+            font-size: 1rem;
+            color: #685349;
+        }
+
+        .menu-item-description {
+            color: #685349;
+            font-size: 0.9rem;
+        }
+
+        .info-section {
+            background-color: #fff;
+            padding: 40px 20px;
+            margin-bottom: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .info-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+
+        .info-cards {
+            display: flex;
+            justify-content: space-around;
+        }
+
+        .info-card {
+            width: 22%;
+            text-align: center;
+            padding: 10px;
+        }
+
+        .info-card img {
+			width: 150px;
+			height: auto;
+			margin-bottom: 10px;
+			transition: transform 0.3s;
+	    }
+	
+	    .info-card img:hover {
+			transform: scale(1.1);
+    
+        }
+        .info-card p {
+            font-size: 14px;
+        }
+
+    
+		/* Footer */
+		footer {
+		background-color: #17120E;
+		padding: 4rem 0;
+		width: 100%; /* Ensure the footer takes full width */
+		}
+
+		.footer-container {
+		width: 100%; /* Ensure the inner container takes full width */
+		padding: 0 1rem; /* Maintain padding */
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		}
+
+        .copyright {
+            color: #AD9476;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #AD9476;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+	   
+		  /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            footer {
+                padding: 2rem 0; /* Adjusted for smaller screens */
+            }
+        }
+	   
+		.back-to-top {
+			position: fixed;
+			bottom: 2rem;
+			right: 2rem;
+			background: rgba(0, 0, 0, 0.8);
+			color: white;
+			padding: 0.5rem 1.5rem;
+			border-radius: 25px; 
+			font-size: 1rem;
+			font-weight: bold;
+			text-align: center;
+			text-decoration: none;
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+			transition: background-color 0.3s, transform 0.2s; 
+			z-index: 998;
+		}
+
+		.back-to-top:hover {
+			background: #796254;
+			transform: translateY(-3px);
+}
+        }
+    </style>
+</head>
+<body>
+
+        <!-- Marquee Section -->
+    <div class="marquee-container">
+        <div class="marquee">
+            ₊˚.🎧 ✩｡☕ 🤎 <b> Welcome to Chocluxe Cafe - Where Every Bite Tells a Story | New Menu Available Now | Visit Our Multiple Locations | Follow Us on Instagram and TikTok for Daily Delights | Special Collections Coming Soon </b> ₊˚.🎧 ✩｡☕ 🤎
+        </div>
+    </div>
+
+     <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+             <img src="images/chocluxelogo.png" alt="Chocluxe Café Logo" class="logo-img"> <b><span class="logo-text"><b>𝐂𝐡𝐨𝐜𝐥𝐮𝐱𝐞 𝐂𝐚𝐟𝐞</b></span></div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="menu.html">Menu</a>
+                <a href="shop.html">Shop</a>
+                <a href="locations.html">Locations</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contactus.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+        <!-- Header -->
+    <header>
+        <h1>Our Delicious Menu</h1>
+        <p>Indulge in our hand-crafted chocolate delights and signature cake and beverages blends.</p>
+    </header>
+
+        <!-- Info Section --> 
+<section class="info-section">
+    <h2>Pick Your Favourite</h2>
+    <div class="info-cards">
+        <!-- Info Card 1 -->
+        <div class="info-card tooltip" tabindex="0">
+            <img src="images/menu-fresh.png" alt="Freshly Baked Daily Icon">
+            <p>Freshly Baked Daily</p>
+            <span class="tooltiptext">At Chocluxe Cafe, every cake and cookie is lovingly baked fresh, ensuring customers indulge in pure, oven-kissed bliss.</span>
+        </div>
+        
+        <!-- Info Card 2 -->
+        <div class="info-card tooltip" tabindex="0">
+            <img src="images/menu-beverages.png" alt="Various Beverages Icon">
+            <p>Various Beverages</p>
+            <span class="tooltiptext">Sip your way through a delightful array of beverages, from rich hot chocolate to reamy chocolate milkshakes and more.</span>
+        </div>
+        
+        <!-- Info Card 3 -->
+        <div class="info-card tooltip" tabindex="0">
+            <img src="images/menu-premium.png" alt="100% Premium Ingredients Icon">
+            <p>100% Premium Ingredients</p>
+            <span class="tooltiptext">Only the finest, carefully selected ingredients make it into our kitchen, bringing exceptional flavor to every bite.</span>
+        </div>
+        
+        <!-- Info Card 4 -->
+        <div class="info-card tooltip" tabindex="0">
+            <img src="images/menu-award.png" alt="Award-Winning Recipes Icon">
+            <p>Award-Winning Recipes</p>
+            <span class="tooltiptext">Our award-winning recipes are celebrated for their irresistible taste and creative brilliance.</span>
+        </div>
+        
+        <!-- Info Card 5 -->
+        <div class="info-card tooltip" tabindex="0">
+            <img src="images/menu-kids.png" alt="Kids' Selection Icon">
+            <p>Kids' Selection</p>
+            <span class="tooltiptext">Discover specially crafted menu delights designed to spark joy and satisfy every child’s sweet cravings.</span>
+        </div>
+    </div>
+</section>
+
+<!-- Dropdown -->
+<div id="dropdown" style="display:none; margin: 1rem 0;">
+    <label for="menu-dropdown">Go to Menu: </label>
+    <select id="menu-dropdown">
+        <option value="">Select a category</option>
+        <option value="freshly-baked">Freshly Baked</option>
+        <option value="beverages">Beverages</option>
+        <option value="premium-popcorn">Premium Popcorn</option>
+    </select>
+</div>
+	
+        <!-- Menu Section -->
+        <section class="menu-section">
+        <!-- Freshly Baked Daily -->
+    <div class="menu-category">
+        <h2>Freshly Made</h2>
+		<div class="menu-item">
+            <img src="images/menu-cake1.jpg" alt="Classic Chocolate Cake">
+            <div>
+                <div class="menu-item-name">Classic Chocolate Cake</div>
+                <div class="menu-item-description">Rich, moist, chocolatey perfection.</div>
+            </div>
+            <div class="menu-item-price">RM 9 / Slice <p> RM 70 / Whole Cake </p> </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="images/menu-cake2.jpg" alt="Chocolate Cheesecake">
+            <div>
+                <div class="menu-item-name">Chocolate Cheesecake</div>
+                <div class="menu-item-description"> Smooth, decadent chocolate bliss.</div>
+            </div>
+            <div class="menu-item-price">RM 9 / Slice <p> RM 70 / Whole Cake </p> </div>
+        </div>
+		<div class="menu-item">
+            <img src="images/menu-cookies1.jpg" alt="Classic Chocolate Cookies">
+            <div>
+                <div class="menu-item-name">Classic Chocolate Cookies</div>
+                <div class="menu-item-description">Soft and chewy chocolate-filled.</div>
+            </div>
+            <div class="menu-item-price">RM 5 / Pieces</div>
+        </div>
+        <div class="menu-item">
+            <img src="images/menu-cookies2.jpg" alt="Chocolate Mint Cookies">
+            <div>
+                <div class="menu-item-name">Chocolate Mint Cookies</div>
+                <div class="menu-item-description">Refreshing mint-chocolate in every bite.</div>
+            </div>
+            <div class="menu-item-price">RM 5 / Pieces</div>
+        </div>
+        </div>
+    </div>
+	
+        <!-- Chocolate Beverages -->
+    <div class="menu-category">
+        <h2>Chocolate Beverages</h2>
+        <div class="menu-item">
+            <img src="images/menu-beverages1.jpg" alt="Classic Chocolate Milkshake">
+            <div>
+                <div class="menu-item-name">Classic Chocolate Milkshake</div>
+                <div class="menu-item-description">Creamy chocolate goodness in every sip.</div>
+            </div>
+            <div class="menu-item-price">RM 12 / Cup</div>
+        </div>
+        <div class="menu-item">
+            <img src="images/menu-beverages2.jpg" alt="Iced Caramel Macchiato">
+            <div>
+                <div class="menu-item-name">Classic Chocolate Smoothie</div>
+                <div class="menu-item-description">Chocolate blend with a touch of sweetness.</div>
+            </div>
+            <div class="menu-item-price">RM 8 / Cup</div>
+        </div>
+		<div class="menu-item">
+            <img src="images/menu-beverages3.jpg" alt="Iced Caramel Macchiato">
+            <div>
+                <div class="menu-item-name">Chocolate Protein Smoothie</div>
+                <div class="menu-item-description">Rich, protein-packed chocolate energy boost.</div>
+            </div>
+            <div class="menu-item-price">RM 8 / Cup</div>
+        </div>
+    </div>
+	
+        <!-- Premium Popcorn -->
+    <div class="menu-category">
+        <h2>Premium Popcorn</h2>
+        <div class="menu-item">
+            <img src="images/menu-popcorn1.jpg" alt="Classic Chocolate-Covered Popcorn">
+            <div>
+                <div class="menu-item-name">Classic Chocolate Popcorn</div>
+                <div class="menu-item-description">Crispy, chocolate-drizzled delight.</div>
+            </div>
+            <div class="menu-item-price">RM 7 / Pack</div>
+        </div>
+        <div class="menu-item">
+            <img src="images/menu-popcorn2.jpg" alt="White Chocolate-Covered Popcorn">
+            <div>
+                <div class="menu-item-name">White Chocolate Popcorn</div>
+                <div class="menu-item-description">Creamy, white chocolate indulgence.</div>
+            </div>
+            <div class="menu-item-price">RM 7 / Pack</div>
+        </div>
+    </div>
+	
+        <!-- Award-Winning Recipes -->
+    <div class="menu-category">
+        <h2>Top Recipes</h2>
+        <div class="menu-item">
+		<img src="images/menu-cake1.jpg" alt="Classic Chocolate-Covered Popcorn">
+            <div>
+                <div class="menu-item-name">Vegan Chocolate Cake</div>
+                <div class="menu-item-description">  Fudgy, plant-based chocolate treat.</div>
+            </div>
+            <div class="menu-item-price">RM 9 / Slice <p> RM 70 / Whole Cake </p> </div>
+        </div>
+		<div class="menu-item">
+            <img src="images/menu-cookies3.jpg" alt="Chocolate Sea Salt Cookies">
+            <div>
+                <div class="menu-item-name">Chocolate Sea Salt Cookies</div>
+                <div class="menu-item-description">Rich chocolate paired with a hint of sea salt.</div>
+            </div>
+            <div class="menu-item-price">RM 5 / Pieces</div>
+        </div>
+    </div>
+
+<!-- Kids' Selection -->
+    <div class="menu-category">
+        <h2>Kids' Favourite</h2>
+        <div class="menu-item">
+		<img src="images/menu-kids1.jpg" alt="Classic Chocolate Milk">
+            <div>
+                <div class="menu-item-name">Classic Chocolate Milk</div>
+                <div class="menu-item-description">  Silky blend of rich cocoa and creamy milk.</div>
+            </div>
+            <div class="menu-item-price">RM 5 / Cup </p> </div>
+        </div>
+		<div class="menu-item">
+		<img src="images/menu-kids2.jpg" alt="Strawberry Chocolate Milk">
+            <div>
+                <div class="menu-item-name">Strawberry Chocolate Milk</div>
+                <div class="menu-item-description">  Juicy berry flavor meets indulgent chocolate.</div>
+            </div>
+            <div class="menu-item-price">RM 5 / Cup </p> </div>
+        </div>
+		<div class="menu-item">
+		<img src="images/menu-kids3.jpg" alt="Chocolate Chip Pancake">
+            <div>
+                <div class="menu-item-name">Chocolate Chip Pancake</div>
+                <div class="menu-item-description">  Fluffy pancakes with melty chocolate chips.</div>
+            </div>
+            <div class="menu-item-price">RM 5 / Cup </p> </div>
+        </div>
+	</div>
+</section>
+
+	 <!-- Hidden audio autoplay -->
+    <audio id="background-music" autoplay loop style="display: none;">
+        <source src="audio/websitemusic.mp3" type="audio/mp3">
+    </audio>	
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="copyright">© 2025 Chocluxe Cafe. All rights reserved.</div>
+            <div class="social-links">
+                 <div class="social-media">
+        <a href="https://www.tiktok.com/@chocluxecafe?_t=ZS-8t3ZNPfOnI2&_r=1 " class="tiktok" target="_blank">
+            <img src="images/tiktok-logo.png" alt="TikTok Logo" style="width: 30px; height: 30px;">
+        </a>
+        <a href="https://www.instagram.com/chocluxecafe/" class="instagram" target="_blank">
+            <img src="images/ig-logo.jpg" alt="Instagram Logo" style="width: 30px; height: 30px;">
+        </a>
+            </div>
+        </div>
+    </footer>
+	
+	<a href="#top" class="back-to-top">Go Back to Top</a>
+
+</body>
+</html>

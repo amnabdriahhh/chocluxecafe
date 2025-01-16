@@ -1,0 +1,509 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Chocluxe Cafe</title>
+	<link rel="icon" href="images/chocluxelogo.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #2D1E17;
+        }
+		
+		/* Marquee Section */
+        .marquee-container {
+            background: linear-gradient(45deg, #AD9476, #685349);
+            padding: 1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee {
+            white-space: nowrap;
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.5rem 0;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+    display: flex;
+    align-items: center; /* Align logo and text vertically */
+    gap: 30px;           /* Space between the logo and text */
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 60px; /* Resize the logo to be more prominent */
+    width: auto;  /* Maintain aspect ratio */
+}
+
+.logo-text {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+}
+
+         .nav-links a {
+            color: #685349;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background: linear-gradient(45deg, #AD9476, #685349);
+            box-shadow: 0 4px 15px rgba(173, 148, 118, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #AD9476;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::before {
+            width: 80%;
+        }
+
+        /* Header */
+        .header {
+            background: linear-gradient(to right, #AD9476, #685349);
+            color: white;
+            padding: 4rem 1rem;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .header p {
+            font-size: 1.2rem;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 3rem 1rem;
+        }
+
+        .content-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 3rem;
+        }
+
+        /* Contact Info Section */
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-info h2 {
+            font-size: 2rem;
+            color: #2D1E17;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-card {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-content {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .icon-container {
+            background: #AD9476;
+            padding: 0.75rem;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .icon-container img {
+            width: 24px;
+            height: 24px;
+            filter: brightness(0) invert(1);
+        }
+
+        .card-text h3 {
+            color: #2D1E17;
+            margin-bottom: 0.25rem;
+        }
+
+        .card-text p {
+            color: #685349;
+        }
+		
+		/* Footer */
+        footer {
+            background-color: #17120E;
+            padding: 4rem 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            color: #AD9476;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #AD9476;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        .social-links i {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        /* Form Section */
+        .contact-form {
+            background: white;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .contact-form h2 {
+            font-size: 2rem;
+            color: #2D1E17;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.9rem;
+            color: #685349;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ddd;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: #AD9476;
+            box-shadow: 0 0 0 3px rgba(173, 148, 118, 0.2);
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #AD9476;
+            color: white;
+            border: none;
+            padding: 1rem;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            transition: background-color 0.3s;
+        }
+
+        .submit-btn:hover {
+            background: #8C7459;
+        }
+
+        .submit-btn img {
+            width: 20px;
+            height: 20px;
+            filter: brightness(0) invert(1);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 2rem;
+            }
+
+            .contact-form,
+            .contact-info {
+                padding: 1.5rem;
+            }
+        }
+		
+		/* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+        }
+
+		.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px; 
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.2s; 
+    z-index: 998;
+}
+
+.back-to-top:hover {
+    background: #796254;
+    transform: translateY(-3px);
+}
+    </style>
+</head>
+<body>
+<!-- Marquee Section -->
+    <div class="marquee-container">
+        <div class="marquee">
+₊˚.🎧 ✩｡☕ 🤎 <b> Welcome to Chocluxe Cafe - Where Every Bite Tells a Story | New Menu Available Now | Visit Our Multiple Locations | Follow Us on Instagram and TikTok for Daily Delights | Special Collections Coming Soon </b> ₊˚.🎧 ✩｡☕ 🤎
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+             <img src="images/chocluxelogo.png" alt="Chocluxe Café Logo" class="logo-img"> <b><span class="logo-text"><b>𝐂𝐡𝐨𝐜𝐥𝐮𝐱𝐞 𝐂𝐚𝐟𝐞</b></span></div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="menu.html">Menu</a>
+                <a href="shop.html">Shop</a>
+                <a href="locations.html">Locations</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contactus.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+	
+    <!-- Header Section -->
+    <div class="header">
+        <h1>Contact Us</h1>
+        <p>We'd love to hear from you!</p>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <div class="content-grid">
+            <!-- Contact Information -->
+            <div class="contact-info">
+                <h2>Get in Touch</h2>
+                
+                <!-- Phone -->
+                <a href="tel:+601162079120" class="contact-card">
+                    <div class="card-content">
+                        <div class="icon-container">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z'%3E%3C/path%3E%3C/svg%3E" alt="Phone">
+                        </div>
+                        <div class="card-text">
+                            <h3>Phone</h3>
+                            <p>+60 (11) 6207-9120</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:chocluxecafe@gmail.com" class="contact-card">
+                    <div class="card-content">
+                        <div class="icon-container">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z'%3E%3C/path%3E%3Cpolyline points='22,6 12,13 2,6'%3E%3C/polyline%3E%3C/svg%3E" alt="Email">
+                        </div>
+                        <div class="card-text">
+                            <h3>Email</h3>
+                            <p>chocluxecafe@gmail.com</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- Instagram -->
+                <a href="https://www.instagram.com/chocluxecafe/" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <div class="card-content">
+                        <div class="icon-container">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Crect x='2' y='2' width='20' height='20' rx='5' ry='5'%3E%3C/rect%3E%3Cpath d='M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z'%3E%3C/path%3E%3Cline x1='17.5' y1='6.5' x2='17.51' y2='6.5'%3E%3C/line%3E%3C/svg%3E" alt="Instagram">
+                        </div>
+                        <div class="card-text">
+                            <h3>Instagram</h3>
+                            <p>@chocluxe</p>
+                        </div>
+                    </div>
+                </a>
+
+                <!-- TikTok -->
+                <a href="https://www.tiktok.com/@chocluxecafe" target="_blank" rel="noopener noreferrer" class="contact-card">
+                    <div class="card-content">
+                        <div class="icon-container">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5'%3E%3C/path%3E%3C/svg%3E" alt="TikTok">
+                        </div>
+                        <div class="card-text">
+                            <h3>TikTok</h3>
+                            <p>@chocluxecafe</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+                <h2>Send us a Message</h2>
+                <form name="form1" method="post" action="mailto:chocluxecafe@gmail.com">
+                    <div class="form-group">
+                        <ol><li value="1"><label for="name">Your Name</label></li>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <ol><li value="2"><label for="email">Email Address</label></li>
+                        <input type="email" id="email" name="email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <ol><li value="3"><label for="subject">Subject</label></li>
+                        <input type="text" id="subject" name="subject" required>
+                    </div>
+
+                    <div class="form-group">
+                        <ol><li value="4"><label for="message">Message</label></li>
+                        <textarea id="message" name="message" rows="4" required></textarea>
+                    </div></ol>
+
+                    <button type="submit" class="submit-btn">
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='24' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='22' y1='2' x2='11' y2='13'%3E%3C/line%3E%3Cpolygon points='22 2 15 22 11 13 2 9 22 2'%3E%3C/polygon%3E%3C/svg%3E" alt="Send">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+	
+		 <!-- Hidden audio autoplay -->
+    <audio id="background-music" autoplay loop style="display: none;">
+        <source src="audio/websitemusic.mp3" type="audio/mp3">
+    </audio>
+	
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="copyright">© 2025 Chocluxe Cafe. All rights reserved.</div>
+            <div class="social-links">
+                 <div class="social-media">
+        <a href="https://www.tiktok.com/@chocluxecafe" class="tiktok" target="_blank">
+            <img src="images/tiktok-logo.png" alt="TikTok Logo" style="width: 30px; height: 30px;">
+        </a>
+        <a href="https://www.instagram.com/chocluxecafe" class="instagram" target="_blank">
+            <img src="images/ig-logo.png" alt="Instagram Logo" style="width: 30px; height: 30px;">
+        </a>
+            </div>
+        </div>
+    </footer>
+	
+	<a href="#top" class="back-to-top">Go Back to Top</a>
+	
+</body>
+</html>

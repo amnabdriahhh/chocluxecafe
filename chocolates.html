@@ -1,0 +1,637 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocolate Collections - Chocluxe Cafe</title>
+	<link rel="icon" href="images/chocluxelogo.png" type="image/png">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+	    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #2D1E17;
+        }
+
+        /* Marquee Section */
+        .marquee-container {
+            background: linear-gradient(45deg, #AD9476, #685349);
+            padding: 1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee {
+            white-space: nowrap;
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.5rem 0;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            text-decoration: none;
+        }
+
+        .logo-img {
+            height: 60px;
+            width: auto;
+        }
+
+        .logo-text {
+            font-size: 30px;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .nav-links a {
+            color: #685349;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background: linear-gradient(45deg, #AD9476, #685349);
+            box-shadow: 0 4px 15px rgba(173, 148, 118, 0.3);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #17120E;
+            padding: 4rem 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            color: #AD9476;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #AD9476;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        .social-links img {
+            width: 30px;
+            height: 30px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+        }
+		
+				.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px; 
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.2s; 
+    z-index: 998;
+}
+
+.back-to-top:hover {
+    background: #796254;
+    transform: translateY(-3px);
+}
+    </style>
+    <script>
+        // Filter Products Functionality
+        function filterProducts(category) {
+            const products = document.querySelectorAll('.product');
+            products.forEach(product => {
+                if (category === 'all' || product.classList.contains(category)) {
+                    product.style.display = 'block';
+                } else {
+                    product.style.display = 'none';
+                }
+            });
+        }
+    </script>
+</head>
+<body>
+
+	    <!-- Marquee Section -->
+    <div class="marquee-container">
+        <div class="marquee">
+            ₊˚.🎧 ✩｡☕ 🤎 <b>Welcome to Chocluxe Cafe - Where Every Bite Tells a Story | New Menu Available Now | Visit Our Multiple Locations | Follow Us on Instagram and TikTok for Daily Delights | Special Collections Coming Soon</b> ₊˚.🎧 ✩｡☕ 🤎
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+             <img src="images/chocluxelogo.png" alt="Chocluxe Café Logo" class="logo-img"> <b><span class="logo-text"><b>𝐂𝐡𝐨𝐜𝐥𝐮𝐱𝐞 𝐂𝐚𝐟𝐞</b></span></div>
+            <div class="nav-links">
+                <a href="index.html" class="active">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="menu.html">Menu</a>
+                <a href="shop.html">Shop</a>
+                <a href="locations.html">Locations</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contactus.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+
+		<div class="container mx-auto px-4 py-12">
+        <h1 class="text-4xl font-bold text-center mb-12 text-[#2C1810]">🍫🤎₊ ⊹♡ 𝗢𝗨𝗥 𝗖𝗛𝗢𝗖𝗢𝗟𝗔𝗧𝗘 𝗖𝗢𝗟𝗟𝗘𝗖𝗧𝗜𝗢𝗡 🍫🤎₊ ⊹♡</h1>
+		<h1 class="text-m text-center mb-12 text-[#2C1810]">Experience chocolate like never before! Our café’s chocolate collection features a curated assortment of artisanal treats, each crafted with passion and precision. Delight in the interplay of textures and flavors—from the intense bitterness of dark chocolate to the sweet creaminess of our signature milk chocolate. Treat yourself to a sweet escape with every delectable bite.</h1>
+        
+		<div class="grid grid-cols-1 md:grid-cols-10 lg:grid-cols-4 gap-8">
+		
+        <!-- Chocolates -->			
+        <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/milkshake.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Chocolate Milkshakes</h3>
+				<p class="text-gray-600 text-sm mb-4">Indulge in our rich and creamy Chocolate Milkshakes, blended with premium chocolate for a deliciously refreshing treat. Perfect for chocolate lovers!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM12/cup</span>
+                    <button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/smoothies.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Chocolate Smoothies</h3>
+                <p class="text-gray-600 text-sm mb-4">Experience the goodness of our Chocolate Smoothies, made with wholesome ingredients and a blend of rich chocolate flavor. A delightful and nutritious choice!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM8/cup</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/classic-cake.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Classic Chocolate Cake</h3>
+                <p class="text-gray-600 text-sm mb-4">Savor the decadence of our Classic Chocolate Cake, featuring moist layers of rich chocolate and velvety frosting. A timeless favorite for any occasion!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM9/slice </span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/choc-cheesecake.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Chocolate  Cheesecake</h3>
+                <p class="text-gray-600 text-sm mb-4">Delight in our Chocolate Cheesecake, combining a creamy chocolate filling with a buttery crust. An indulgent dessert that will satisfy any sweet tooth!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM9/slice </span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/vegan-cake.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Vegan Chocolate Cake</h3>
+                <p class="text-gray-600 text-sm mb-4">Enjoy our Vegan Chocolate Cake, crafted without any animal products but full of rich chocolate flavor. A guilt-free treat for everyone to enjoy!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM9/slice </span><button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/choc-cookies.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Classic Chocolate Cookies</h3>
+                <p class="text-gray-600 text-sm mb-4">Treat yourself to our Classic Chocolate Cookies, baked to perfection and filled with chunks of rich chocolate. A nostalgic favorite that's hard to resist!.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM5/pieces</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/choc-mint.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Chocolate Mint Cookies</h3>
+                <p class="text-gray-600 text-sm mb-4">Freshen up your day with our Chocolate Mint Cookies, combining the classic taste of chocolate with a refreshing mint twist. A delightful combination!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM5/pieces</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/seasalt-cookies.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Chocolate Sea Salt Cookies</h3>
+                <p class="text-gray-600 text-sm mb-4">Indulge in our Chocolate Sea Salt Cookies, where sweet meets savory. The perfect balance of rich chocolate and a hint of sea salt for a unique flavor experience!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM5/pieces</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/icecream.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Chocolate Ice Cream Cone</h3>
+                <p class="text-gray-600 text-sm mb-4">Enjoy our Chocolate Corn Cone, a delightful combination of crunchy corn and rich chocolate coating. A unique and tasty treat to satisfy your cravings!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM8/cone</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/pretzels.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Chocolate Pretzels</h3>
+                <p class="text-gray-600 text-sm mb-4">Savor our Chocolate Pretzels, featuring a perfect blend of sweet and salty flavors. These hand-dipped pretzels are a great snack for any occasion!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM3/pieces</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/choc-popcorn.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Classic Chocolate-Covered Popcorn</h3>
+                <p class="text-gray-600 text-sm mb-4">Indulge in our velvety chocolate menus with the finest ingredients for a blissfuL melt-in-your-mouth experience.</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM7/pack</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/white-popcorn.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ White Chocolate-Covered Popcorn</h3>
+                <p class="text-gray-600 text-sm mb-4">Indulge in our Classic Chocolate-Covered Popcorn, a delightful mix of buttery popcorn drizzled with rich chocolate. A fun and addictive snack!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM7/pack</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/kids-choc.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Classic Chocolate Milk</h3>
+                <p class="text-gray-600 text-sm mb-4">Experience the sweetness of our White Chocolate-Covered Popcorn, combining fluffy popcorn with creamy white chocolate. A sweet treat that's hard to resist!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM5/cup</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/kids-stoberi.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Strawberry-Choco Milk</h3>
+                <p class="text-gray-600 text-sm mb-4">Refresh yourself with our Classic Chocolate Milk, made with rich cocoa and creamy milk. A nostalgic drink that brings back sweet memories</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM5/cup</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/bomboloni.jpg"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Chocolate Bomboloni</h3>
+                <p class="text-gray-600 text-sm mb-4">Enjoy our Strawberry-Choco Milk, a delicious blend of strawberry and chocolate flavors. A unique twist on the classic that’s perfect for any time of day!</p>
+                <div class="flex justify-between items-center">
+					<span class="text-[#2C1810] font-medium">RM3/pcs</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/kids-pancake.png"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Chocolate Chip Pancake</h3>
+                <p class="text-gray-600 text-sm mb-4">Savor our Chocolate Bomboloni, fluffy Italian doughnuts filled with rich chocolate cream. A heavenly treat that’s perfect for any dessert lover!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM10/2 pcs</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/bread.jpg"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Chocolate Cromboloni</h3>
+                <p class="text-gray-600 text-sm mb-4">Indulge in our Chocolate Cornboloni, featuring a luscious chocolate filling wrapped in a soft, fluffy dough. A delightful treat that's sure to satisfy!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM5/pieces</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/pie.jpg"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Chocolate Creampie</h3>
+                <p class="text-gray-600 text-sm mb-4">Savor our Chocolate Creampie, a decadent dessert with a rich chocolate filling nestled in a buttery crust. Topped with whipped cream, it's a classic favorite!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM12/pieces</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/creampuff.jpg"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Chocolate Creampuff</h3>
+                <p class="text-gray-600 text-sm mb-4">Experience our Chocolate Creampuff, a delightful pastry filled with smooth chocolate cream. Perfect for a sweet snack or a special dessert!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM2/pieces</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+		 <div class="product chocolate product-card">
+            <div class="bg-white p-6 rounded-lg">
+                <div class="relative group">
+                    <img src="product/muffin.jpg"
+                         alt="Chocolates"
+                         class="w-full aspect-square object-cover rounded-lg mb-4">
+                </div>
+                <h3 class="playfair text-xl font-bold text-[#2C1810] mb-2">.𖥔 ݁ ˖ Chocolate Muffin</h3>
+                <p class="text-gray-600 text-sm mb-4">Enjoy our Chocolate Muffin, moist and rich with chocolate flavor. Perfect for breakfast or an afternoon treat, these muffins are a chocolate lover's dream!</p>
+                <div class="flex justify-between items-center">
+                    <span class="text-[#2C1810] font-medium">RM3.50/pieces</span>
+					<button class="bg-[#5C3D2E] text-white px-4 py-2 rounded-md hover:bg-[#8B4513] add-to-cart">Add to Cart</button>
+                </div>
+            </div>
+        </div>
+		
+	</div>
+</div>
+
+<!-- Modal HTML -->
+<div id="cartModal" class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" style="display: none;">
+    <div class="bg-white p-4 rounded-lg shadow-xl max-w-xs w-full m-4"> <!-- Reduced max-width to 'xs' -->
+        <div class="flex justify-between items-center mb-4">
+            <h2 class="text-lg font-bold text-[#2C1810]">Complete Your Order</h2>
+            <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">✕</button>
+        </div>
+
+        <form onsubmit="handleSubmit(event)" class="space-y-3">
+            <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                <input type="text" id="name" name="name" required class="w-full px-2 py-1 border border-gray-300 rounded-md focus:ring-[#8B4513] focus:border-[#8B4513]" placeholder="Enter your name">
+            </div>
+
+            <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700 mb-1">Phone Number</label>
+                <input type="tel" id="phone" name="phone" required class="w-full px-2 py-1 border border-gray-300 rounded-md focus:ring-[#8B4513] focus:border-[#8B4513]" placeholder="Enter your phone number">
+            </div>
+
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                <input type="email" id="email" name="email" required class="w-full px-2 py-1 border border-gray-300 rounded-md focus:ring-[#8B4513] focus:border-[#8B4513]" placeholder="Enter your email">
+            </div>
+
+            <div>
+                <label for="address" class="block text-sm font-medium text-gray-700 mb-1">Delivery Address</label>
+                <textarea id="address" name="address" required rows="2" class="w-full px-2 py-1 border border-gray-300 rounded-md focus:ring-[#8B4513] focus:border-[#8B4513]" placeholder="Enter your delivery address"></textarea>
+            </div>
+
+            <div class="flex justify-end space-x-2 mt-2">
+                <button type="button" onclick="closeModal()" class="px-3 py-1 text-sm font-medium text-gray-700 bg-gray-100 rounded-md hover:bg-gray-200">Cancel</button>
+                <button type="submit" class="px-3 py-1 text-sm font-medium text-white bg-[#5C3D2E] rounded-md hover:bg-[#8B4513]">Submit Order</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+	<script>
+		// Modal functionality
+		function openModal() {
+			document.getElementById('cartModal').style.display = 'flex';
+		}
+
+		function closeModal() {
+			document.getElementById('cartModal').style.display = 'none';
+		}
+
+		// Close modal when clicking outside
+		window.onclick = function(event) {
+			const modal = document.getElementById('cartModal');
+			if (event.target === modal) {
+				closeModal();
+			}
+		};
+
+		// Form submission
+		function handleSubmit(event) {
+			event.preventDefault();
+			const formData = new FormData(event.target);
+			const data = Object.fromEntries(formData.entries());
+			console.log('Form submitted:', data);
+			closeModal();
+			event.target.reset();
+		}
+
+		// Add modal open functionality to all Add to Cart buttons
+		document.querySelectorAll('.add-to-cart').forEach(button => {
+			button.addEventListener('click', openModal);
+		});
+	</script>
+
+	 <!-- Hidden audio autoplay -->
+    <audio id="background-music" autoplay loop style="display: none;">
+        <source src="audio/websitemusic.mp3" type="audio/mp3">
+    </audio>	
+	
+    <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="copyright">© 2025 Chocluxe Cafe. All rights reserved.</div>
+            <div class="social-links">
+                 <div class="social-media">
+        <a href="https://www.tiktok.com/@chocluxecafe" class="tiktok" target="_blank">
+            <img src="images/tiktok-logo.png" alt="TikTok Logo" style="width: 30px; height: 30px;">
+        </a>
+        <a href="https://www.instagram.com/chocluxecafe" class="instagram" target="_blank">
+            <img src="images/ig-logo.png" alt="Instagram Logo" style="width: 30px; height: 30px;">
+        </a>
+            </div>
+        </div>
+    </footer>
+	
+	<a href="#top" class="back-to-top">Go Back to Top</a>
+	
+</body>
+</html>

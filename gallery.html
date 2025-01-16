@@ -1,0 +1,711 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chocluxe Cafe - Gallery</title>
+	<link rel="icon" href="images/chocluxelogo.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #fff;
+            color: #2D1E17;
+        }
+		
+		/* Marquee Section */
+        .marquee-container {
+            background: linear-gradient(45deg, #AD9476, #685349);
+            padding: 1rem 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .marquee {
+            white-space: nowrap;
+            display: inline-block;
+            animation: marquee 20s linear infinite;
+            color: white;
+            font-size: 1.2rem;
+            padding: 0.5rem 0;
+        }
+
+        @keyframes marquee {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+
+        /* Navigation */
+        nav {
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            padding: 1.5rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+    display: flex;
+    align-items: center; 
+    gap: 30px;          
+    text-decoration: none;
+}
+
+.logo-img {
+    height: 60px; 
+    width: auto;  
+}
+
+.logo-text {
+    font-size: 30px;
+    font-weight: bold;
+    color: #333;
+}
+
+         .nav-links a {
+            color: #685349;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #fff;
+            background: linear-gradient(45deg, #AD9476, #685349);
+            box-shadow: 0 4px 15px rgba(173, 148, 118, 0.3);
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::before {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background: #AD9476;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+
+        .nav-links a:hover::before {
+            width: 80%;
+        }
+		
+		/* Gallery Header */
+        .gallery-header {
+            text-align: center;
+            padding: 3rem 0;
+            background-image: 
+            color: white;
+        }
+
+        .gallery-header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .gallery-header p {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            opacity: 0.9;
+        }
+
+        /* Filter Buttons */
+        .filter-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            padding: 2rem 1rem;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.75rem 1.5rem;
+            border-radius: 9999px;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s;
+            font-size: 1rem;
+        }
+
+        .filter-btn.active {
+            background-color: #685349;
+            color: white;
+        }
+
+        .filter-btn:not(.active) {
+            background-color: rgba(173, 148, 118, 0.2);
+            color: #685349;
+        }
+
+        .filter-btn:not(.active):hover {
+            background-color: rgba(173, 148, 118, 0.3);
+        }
+
+        /* Gallery Grid */
+        .gallery-grid {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 300px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+            opacity: 0;
+            transition: opacity 0.3s;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 1.5rem;
+            color: white;
+        }
+
+        .gallery-item:hover .gallery-item-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item-title {
+            font-size: 1.25rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Call to Action */
+        .cta-section {
+            text-align: center;
+            padding: 4rem 1rem;
+            background-color: rgba(173, 148, 118, 0.1);
+        }
+
+        .cta-section h2 {
+            font-size: 2rem;
+            color: #685349;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            color: rgba(104, 83, 73, 0.8);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 2rem;
+            background-color: #685349;
+            color: white;
+            text-decoration: none;
+            border-radius: 9999px;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #AD9476;
+        }
+		
+		/* Footer */
+        footer {
+            background-color: #17120E;
+            padding: 4rem 0;
+        }
+
+        .footer-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .copyright {
+            color: #AD9476;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+
+        .social-links a {
+            color: #AD9476;
+            transition: color 0.3s;
+            padding: 0.5rem;
+        }
+
+        .social-links a:hover {
+            color: white;
+        }
+
+        .social-links i {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+			
+            .footer-container {
+                flex-direction: column;
+                text-align: center;
+                gap: 2rem;
+            }
+
+            .prev-btn, .next-btn {
+                width: 40px;
+                height: 40px;
+                font-size: 1.5rem;
+            }
+			
+            .gallery-header h1 {
+                font-size: 2rem;
+            }
+
+            .filter-buttons {
+                gap: 0.5rem;
+            }
+
+            .filter-btn {
+                padding: 0.5rem 1rem;
+            }
+        }
+
+		
+		.back-to-top {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    background: rgba(0, 0, 0, 0.8);
+    color: white;
+    padding: 0.5rem 1.5rem;
+    border-radius: 25px; 
+    font-size: 1rem;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: background-color 0.3s, transform 0.2s; 
+    z-index: 998;
+}
+
+.back-to-top:hover {
+    background: #796254;
+    transform: translateY(-3px);
+}
+
+    </style>
+    <script src="https://unpkg.com/lucide@latest"></script>
+</head>
+<body>
+
+	<!-- Marquee Section -->
+    <div class="marquee-container">
+        <div class="marquee">
+₊˚.🎧 ✩｡☕ 🤎 <b> Welcome to Chocluxe Cafe - Where Every Bite Tells a Story | New Menu Available Now | Visit Our Multiple Locations | Follow Us on Instagram and TikTok for Daily Delights | Special Collections Coming Soon </b> ₊˚.🎧 ✩｡☕ 🤎
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">
+             <img src="images/chocluxelogo.png" alt="Chocluxe Café Logo" class="logo-img"> <b><span class="logo-text"><b>𝐂𝐡𝐨𝐜𝐥𝐮𝐱𝐞 𝐂𝐚𝐟𝐞</b></span></div>
+            <div class="nav-links">
+                <a href="index.html">Home</a>
+                <a href="aboutus.html">About Us</a>
+                <a href="menu.html">Menu</a>
+                <a href="shop.html">Shop</a>
+                <a href="locations.html">Locations</a>
+                <a href="gallery.html">Gallery</a>
+                <a href="contactus.html">Contact Us</a>
+            </div>
+        </div>
+    </nav>
+	
+	<!-- Gallery Header -->
+    <div class="gallery-header">
+        <h1>Our Gallery</h1>
+        <p>Step into our world of chocolate delights and cozy moments. Browse through our carefully curated collection of images showcasing our cafe's warm ambiance, decadent desserts, and artisanal beverages.</p>
+    </div>
+
+    <!-- Filter Buttons -->
+    <div class="filter-buttons">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="ambiance">Ambiance</button>
+        <button class="filter-btn" data-filter="desserts">Desserts</button>
+        <button class="filter-btn" data-filter="beverages">Beverages</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid">
+        <!-- Ambiance Items -->
+        <div class="gallery-item" data-category="ambiance">
+            <img src="images/ambiance1.jpg" alt="Elegant Comfort">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Elegant Comfort</h3>
+                <p>Cozy bergère chairs paired with stylish dining tables, all illuminated by a beautiful chandelier for a warm and inviting ambiance.</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="ambiance">
+            <img src="images/ambiance2.jpg" alt="Sweet Inspiration">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Sweet Inspiration</h3>
+                <p>Elegant dining tables and bergère chairs set against walls adorned with framed Chocluxe dessert masterpieces, creating a delectable atmosphere.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="ambiance">
+            <img src="images/ambiance3.jpg" alt="Choco Hub In Action">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Choco Hub In Action</h3>
+                <p>A sleek front kitchen equipped for crafting beverages and warming desserts, paired with a stylish cashier counter for seamless service.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="ambiance">
+            <img src="images/ambiance4.jpg" alt="Welcoming Charming Seating">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Welcoming Charming Seating</h3>
+                <p>Charming seating arrangements near the Chocluxe front door, creating a cozy spot to relax and enjoy the café’s vibrant ambiance.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="ambiance">
+            <img src="images/ambiance5.jpg" alt="Front Door Charm">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Front Door Charm</h3>
+                <p>A delightful seating area by the Chocluxe entrance, perfect for enjoying a treat while taking in the welcoming atmosphere.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="ambiance">
+            <img src="images/ambiance6.jpg" alt="Front Kitchen">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Front Kitchen</h3>
+                <p>A detailed view of the Chocluxe front kitchen, featuring sleek counters and all the essentials for crafting delicious beverages and desserts.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="ambiance">
+            <img src="images/ambiance7.jpg" alt="Front Kitchen 2.0">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Front Kitchen 2.0</h3>
+                <p>A fresh angle of the Chocluxe front kitchen, highlighting its modern design and efficient layout for preparing delightful treats.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="ambiance">
+            <img src="images/ambiance8.jpg" alt="Cozy Corner by the Stairs">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Cozy Corner by the Stairs</h3>
+                <p>A two or three seater setup near the stairs, offering customers a cozy spot to enjoy their treats in front of the front kitchen.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="ambiance">
+            <img src="images/ambiance9.jpg" alt="Stylish Stairway to Flavor">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Stylish Stairway to Flavor</h3>
+                <p>The elegant staircase at Chocluxe Cafe leads to the second floor, offering a seamless blend of style and comfort.</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="ambiance">
+            <img src="images/ambiance10.jpg" alt="Vintage Display">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Vintage Display</h3>
+                <p>A charming display area in the front kitchen featuring a vintage teapot, inviting customers to pour and enjoy rich chocolate tea or other delights.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="4 Seater">
+            <img src="images/ambiance11.jpg" alt="4 Seater">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">4 Seater</h3>
+                <p>Ample seating on the second floor, designed for larger groups with comfortable 4-seater tables, perfect for social gatherings or enjoying extended coffee breaks.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="ambiance">
+            <img src="images/ambiance12.jpg" alt="Chocluxe Cafe Exterior">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Chocluxe Cafe Exterior</h3>
+                <p>The inviting exterior of Chocluxe Cafe, featuring a warm façade, cozy outdoor seating, and elegant signage, creating the perfect spot for passersby to stop and indulge.</p>
+            </div>
+        </div>
+
+        <!-- Desserts Items -->
+        <div class="gallery-item" data-category="desserts">
+            <img src="images/desserts1.jpg" alt="Classic Chocolate Delight">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Classic Chocolate Delight</h3>
+                <p>A rich, velvety chocolate cake perfect for any celebration.</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="desserts">
+            <img src="images/desserts2.jpg" alt="Choco Duo Bliss">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Choco Duo Bliss</h3>
+                <p>Warm chocolate chip cookies paired with a comforting cup of chocolate tea.</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="desserts">
+            <img src="images/desserts3.jpg" alt="Chocolate & Cheese Harmony">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Chocolate & Cheese Harmony</h3>
+                <p>A creamy cheesecake infused with luscious chocolate layers.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="desserts">
+            <img src="images/desserts4.jpg" alt="Choco-Covered Crunch">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Choco-Covered Crunch</h3>
+                <p>Crispy pretzels dipped in smooth, velvety chocolate for a sweet and salty treat.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="desserts">
+            <img src="images/desserts5.jpg" alt="Ultimate Chocolate Temptation">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Ultimate Chocolate Temptation</h3>
+                <p>A classic chocolate cake dripping with creamy goodness, crowned with a scoop of ice cream.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="desserts">
+            <img src="images/desserts6.jpg" alt="Chocolate-Coated Delight">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Chocolate-Coated Delight</h3>
+                <p>Popcorn generously coated in rich, creamy chocolate for a satisfying sweet snack.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="desserts">
+            <img src="images/desserts7.jpg" alt="Minty Chocolate Cravings">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Minty Chocolate Cravings</h3>
+                <p>Soft chocolate cookies infused with a refreshing hint of mint.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="desserts">
+            <img src="images/desserts8.jpg" alt="Classic Indulgence">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Classic Indulgence</h3>
+                <p>A scoop of creamy ice cream, perfectly paired with rich, decadent chocolate.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="desserts">
+            <img src="images/desserts9.jpg" alt="Sweet White Drizzle">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Sweet White Drizzle</h3>
+                <p>Popcorn generously coated with silky white chocolate for a delightful treat.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="desserts">
+            <img src="images/desserts10.jpg" alt="Fluffy Choco Perfection">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Fluffy Choco Perfection</h3>
+                <p>Light and fluffy pancakes infused with rich chocolate chips, served with syrup.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="desserts">
+            <img src="images/desserts11.jpg" alt="Creamy Oreo Chocolate Ice Cream">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Coming soon...</h3>
+                <p>A decadent ice cream made with crushed Oreos, creamy chocolate, and rich, velvety swirls—launching soon on our menu.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="desserts">
+            <img src="images/desserts12.jpg" alt="Rich Vegan Chocolate Heaven">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Rich Vegan Chocolate Heaven</h3>
+                <p>A chocolate cake made with plant-based ingredients, perfectly moist and deeply satisfying.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="desserts">
+            <img src="images/desserts13.jpg" alt="Chocolate Pretzel Topping">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Chocolate Pretzel Topping</h3>
+                <p> A moist chocolate cake finished with crispy pretzels, adding a delightful crunch and chocolatey sweetness on top.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="desserts">
+            <img src="images/desserts14.jpg" alt="Chocolate & White Drizzle">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Chocolate & White Drizzle</h3>
+                <p>Popcorn coated with a delicious blend of smooth white chocolate and rich dark chocolate, creating a sweet and crunchy treat.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="desserts">
+            <img src="images/desserts15.jpg" alt="Coming soon...">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Coming soon...</h3>
+                <p>Soft chocolate chip cookies sandwiching rich chocolate ice cream, creating the ultimate indulgent treat—coming soon to our menu.</p>
+            </div>
+        </div>
+		<div class="gallery-item" data-category="desserts">
+            <img src="images/desserts16.jpg" alt="Coming soon...">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Coming soon...</h3>
+                <p>Soft chocolate chip cookies stuffed with luscious strawberries—fun, fruity, and full of flavor—coming soon to our menu!</p>
+            </div>
+        </div>
+		
+
+        <!-- Beverages Items -->
+        <div class="gallery-item" data-category="beverages">
+            <img src="images/beverages1.jpg" alt="Chocolate Milkshake Perfection">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Chocolate Milkshake Perfection</h3>
+                <p> A thick and creamy chocolate milkshake, topped with whipped cream and drizzled chocolate.</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="beverages">
+            <img src="images/beverages2.jpg" alt="Chocolate Smoothie Treat">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Chocolate Smoothie Treat</h3>
+                <p>A creamy chocolate smoothie topped with whipped cream and a drizzle of rich chocolate.</p>
+            </div>
+        </div>
+        <div class="gallery-item" data-category="beverages">
+            <img src="images/beverages3.jpg" alt="Chocolate Protein Boost">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Chocolate Protein Boost</h3>
+                <p>A nutrient-packed chocolate protein smoothie, topped with a drizzle of almond butter and a sprinkle of chia seeds for an extra boost.</p>
+            </div>
+        </div>
+	<div class="gallery-item" data-category="beverages">
+            <img src="images/beverages4.jpg" alt="Kid-Friendly Chocolate Milk">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Kid-Friendly Chocolate Milk</h3>
+                <p>A smooth and creamy chocolate milk, perfectly sweetened for little ones to enjoy.</p>
+            </div>
+        </div>
+	<div class="gallery-item" data-category="beverages">
+            <img src="images/beverages5.jpg" alt="Strawberry-Choco Kid’s Delight">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Strawberry-Choco Kid’s Delight</h3>
+                <p>A fun and fruity strawberry chocolate milk, smooth and sweet, specially made for kids.</p>
+            </div>
+        </div>
+	<div class="gallery-item" data-category="beverages">
+            <img src="images/beverages6.jpg" alt="Coming soon...">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Coming soon...</h3>
+                <p>A creamy cookies and cream milkshake blended with Oreo cookies and topped with chocolate drizzle—coming soon to our menu!</p>
+            </div>
+        </div>
+	<div class="gallery-item" data-category="beverages">
+            <img src="images/beverages7.jpg" alt="Coming soon....">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Coming soon...</h3>
+                <p>A decadent chocolate milkshake, generously drizzled with rich chocolate, topped with whipped cream, and finished with colorful M&Ms.</p>
+            </div>
+        </div>
+	<div class="gallery-item" data-category="beverages">
+            <img src="images/beverages8.jpg" alt="Coming soon...">
+            <div class="gallery-item-overlay">
+                <h3 class="gallery-item-title">Coming soon...</h3>
+                <p>A sweet strawberry milkshake blended with chocolate, topped with whipped cream and a playful drizzle—perfect for a fun and delicious treat.</p>
+            </div>
+        </div>
+    </div>
+		
+    <!-- Call to Action -->
+    <div class="cta-section">
+        <h2>Experience the Magic in Person</h2>
+        <p>These images are just a taste of what awaits you at Chocluxe Cafe. Visit us to indulge in our delectable treats and warm atmosphere.</p>
+        <a href="locations.html" class="cta-button">Find Where Is Chocluxe Cafe!</a>
+    </div>
+	
+	
+		 <!-- Hidden audio autoplay -->
+    <audio id="background-music" autoplay loop style="display: none;">
+        <source src="audio/websitemusic.mp3" type="audio/mp3">
+    </audio>
+	
+	 <!-- Footer -->
+    <footer>
+        <div class="footer-container">
+            <div class="copyright">© 2025 Chocluxe Cafe. All rights reserved.</div>
+            <div class="social-links">
+                 <div class="social-media">
+        <a href="https://www.tiktok.com/@chocluxecafe" class="tiktok" target="_blank">
+            <img src="images/tiktok-logo.png" alt="TikTok Logo" style="width: 30px; height: 30px;">
+        </a>
+        <a href="https://www.instagram.com/chocluxecafe" class="instagram" target="_blank">
+            <img src="images/ig-logo.png" alt="Instagram Logo" style="width: 30px; height: 30px;">
+        </a>
+            </div>
+        </div>
+    </footer>
+	
+	<a href="#top" class="back-to-top">Go Back to Top</a>
+	
+	 <script>
+        // Gallery filtering
+        const filterButtons = document.querySelectorAll('.filter-btn');
+        const galleryItems = document.querySelectorAll('.gallery-item');
+
+        filterButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                // Update active button
+                filterButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+
+                // Filter gallery items
+                const filter = button.getAttribute('data-filter');
+                galleryItems.forEach(item => {
+                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
+                        item.style.display = 'block';
+                    } else {
+                        item.style.display = 'none';
+                    }
+                });
+            });
+        });
+    </script>
+	
+</body>
+</html>
